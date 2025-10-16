@@ -314,3 +314,108 @@ footer {
         margin: 25px auto 0 auto; /* Centrado */
     }
 }
+
+
+
+.form-remember {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9rem; 
+}
+
+/* El label que envuelve el checkbox y el texto "Recuérdame" */
+.remember-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+    margin-right: auto;
+    white-space: nowrap; 
+}
+
+/* 1. Ocultar el checkbox nativo */
+.custom-checkbox {
+    /* Ocultar, pero dejar accesible */
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* 2. Crear el elemento visual (checkmark) */
+.custom-checkmark {
+    height: 18px;
+    width: 18px;
+    background-color: #f9f9f9; /* Color de fondo claro (blanco/gris claro) */
+    border-radius: 50%; /* Lo hacemos circular */
+    display: inline-block;
+    position: relative;
+    margin-right: 8px; /* Espacio entre el círculo y el texto */
+    transition: background-color 0.2s ease;
+    border: 2px solid #ccc; /* Borde gris para mejor definición */
+}
+
+/* 3. Estilo cuando el checkbox está marcado */
+.custom-checkbox:checked ~ .custom-checkmark {
+    background-color: #EB8125; /* Cambia a tu color naranja */
+    border-color: #EB8125; /* Mismo color del borde */
+}
+
+/* 4. Crear el ícono de marca de verificación (el "check") */
+.custom-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Mostrar el ícono cuando el checkbox está marcado */
+.custom-checkbox:checked ~ .custom-checkmark:after {
+    display: block;
+}
+
+/* 5. Estilizar el checkmark (un pequeño tilde blanco) */
+.custom-checkmark:after {
+    left: 5px; /* Ajustar posición horizontal */
+    top: 1px; /* Ajustar posición vertical */
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg); /* Gira para que parezca una marca de verificación */
+}
+
+
+/* Estilo del enlace de contraseña perdida (se mantiene) */
+.form-remember a {
+    font-weight: bold;
+    color: #EB8125;
+    text-decoration: none;
+    text-align: right;
+    white-space: nowrap;
+    margin-top: 5px; 
+    flex-basis: 100%; 
+}
+
+.form-remember a:hover {
+    text-decoration: underline;
+}
+
+/* MEDIA QUERY: TABLET (768px) - CORRECCIÓN DE POSICIÓN DEL ENLACE */
+@media (min-width: 768px) {
+    /* Mantiene los estilos que ya tenías para tablet */
+    .form-remember {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    
+    .form-remember a {
+        flex-basis: auto; 
+        margin-top: 0;
+    }
+}
