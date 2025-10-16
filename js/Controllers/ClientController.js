@@ -191,13 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.correo && !data.correo.includes("@")) {
                 return Swal.fire("Error", "El correo debe contener @", "error");
             }
-            if (data.correo && !/^[\w.-]+@(gmail\.com|yahoo\.com|outlook\.com)$/.test(data.correo)) {
-                return Swal.fire({
-                    icon: "error",
-                    title: "Error en correo",
-                    text: "El correo solo puede ser de dominio @gmail.com, @yahoo.com o @outlook.com"
-                });
-            }
 
             // 🔹 Validación de NIT único (solo cuando es agregar, no editar)
             if (!isEditing) {

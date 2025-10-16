@@ -88,7 +88,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const selectedOption = combo.options[combo.selectedIndex];
         if (!selectedOption || !selectedOption.value) {
-            alert("Seleccione un transporte antes de continuar.");
+            Swal.fire({
+                icon: "warning",
+                title: "Campo obligatorio",
+                text: "Debe seleccionar un transporte antes de continuar.",
+                confirmButtonText: "Entendido"
+            });
             return;
         }
 

@@ -4,13 +4,18 @@ fetch("https://apitrackline-3047cf7af332.herokuapp.com/api/auth/me", {
   .then(res => {
     if (!res.ok) throw new Error("No autorizado");
   })
-
   .catch(() => {
     window.location.href = "Login.html";
   });
 
-
-import { getTrackingById, updateEstado, updateTracking, createTracking, createEstado, updateOrdenServicio } from "../Services/ProductTrackingService.js";
+import {
+  getTrackingById,
+  updateEstado,
+  updateTracking,
+  createTracking,
+  createEstado,
+  updateOrdenServicio
+} from "../Services/ProductTrackingService.js";
 
 // =========================================================================
 // 1. DEFINICIONES GLOBALES Y UTILIDADES
@@ -256,16 +261,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       try {
         if (isNewViaje) {
           const response = await createTracking({ idOrdenServicio: idOrdenServicioNum, ...viajePayload });
+
           if (response?.data?.idViaje) {
             const nuevoIdViaje = response.data.idViaje;
+
             await updateOrdenServicio(idOrdenServicioNum, { idViaje: nuevoIdViaje });
             await Swal.fire({
               icon: "success",
-              title: "Pedido guardado",
-              text: "La orden de servicio fue guardada correctamente",
+              title: "Viaje creado correctamente",
+              html: `
+    <p>El nuevo viaje se creó con éxito.</p>
+    <p><strong>ID del viaje:</strong> <span style="color: red; font-weight: bold;">${nuevoIdViaje}</span></p>
+  `,
               confirmButtonText: "OK"
             });
+            // 🔄 Recargar con IDs correctos
             window.location.href = `${location.pathname}?idViaje=${nuevoIdViaje}&idOrdenServicio=${idOrdenServicioNum}`;
+          } else {
+            throw new Error("No se devolvió un idViaje en la respuesta.");
           }
         } else {
           await updateTracking(idViaje, viajePayload);
