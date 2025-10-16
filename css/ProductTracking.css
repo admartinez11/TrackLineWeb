@@ -1,0 +1,243 @@
+/* ====== ESTILO GENERAL ====== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fb;
+  color: #0A1D37;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 40px 90px;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.SVtxt {
+  color: #0A1D37;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.SPtxt {
+  color: #EB8125;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.seguimiento-contenedor {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px 40px;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ====== CUADROS DE SEGUIMIENTO ====== */
+.seguimiento-box,
+.seguimiento-box-segundo {
+  background: #fff;
+  border: 2px solid #0A1D37;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.seguimiento-box label,
+.seguimiento-box-segundo label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  color: #0A1D37;
+  margin: 10px 0;
+}
+
+/* Checkboxes */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #EB8125;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+input[type="checkbox"]:hover {
+  transform: scale(1.1);
+}
+
+/* ====== SELECTIVO ====== */
+.selectivo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.selectivo-container label {
+  font-weight: 600;
+}
+
+#selectivo {
+  flex: 1;
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+#selectivo:hover {
+  border-color: #EB8125;
+  background-color: #fff8f1;
+}
+
+#selectivo:focus {
+  outline: none;
+  border-color: #EB8125;
+  box-shadow: 0 0 6px rgba(235, 129, 37, 0.5);
+}
+
+/* ====== BOTÓN GUARDAR Y SIGUIENTE ====== */
+.boton-finalizar {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.boton-finalizar button {
+  background-color: #EB8125;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-finalizar button:hover {
+  background-color: #cf6d1f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.boton-finalizar button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* ====== SEGUNDA SECCIÓN DE DATOS ====== */
+#segundo-recuadro {
+  display: none;
+}
+
+label {
+  font-weight: 600;
+  color: #0A1D37;
+  margin-top: 12px;
+}
+
+input[type="datetime-local"],
+input[type="text"],
+select.input-field {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #EB8125;
+  box-shadow: 0 0 6px rgba(235, 129, 37, 0.4);
+  outline: none;
+}
+
+/* ====== BOTÓN FINAL ====== */
+#guardarTransporte {
+  background-color: #EB8125;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#guardarTransporte:hover {
+  background-color: #cf6d1f;
+  transform: translateY(-2px);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  main {
+    padding: 20px;
+  }
+
+  .seguimiento-contenedor {
+    padding: 20px;
+  }
+
+  .seguimiento-box,
+  .seguimiento-box-segundo {
+    width: 100%;
+  }
+
+  .SVtxt {
+    font-size: 26px;
+  }
+
+  .SPtxt {
+    font-size: 18px;
+  }
+}
+
+.volver-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#btnVolverOrdenes {
+  background-color: #0A1D37;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#btnVolverOrdenes:hover {
+  background-color: #EB8125;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+a.logo-text,
+a.logo-text:hover,
+a.logo-text:visited,
+a.logo-text:active {
+  text-decoration: none !important;
+}

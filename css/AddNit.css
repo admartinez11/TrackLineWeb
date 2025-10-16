@@ -1,0 +1,160 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+  ==========================================
+  MAIN CONTENT
+  ==========================================
+*/
+main {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio disponible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Agrega padding para evitar que el contenido toque los bordes */
+}
+
+.pregunta-contenedor {
+    font-family: 'Poppins', sans-serif;
+    color: #001b41;
+    font-size: 30px;
+    /* Elimina los márgenes fijos y usa flexbox para centrar */
+    margin-top: 0;
+    margin-left: 0;
+    max-width: 800px; /* Limita el ancho en pantallas grandes */
+    width: 100%;
+    text-align: center; /* Centra el texto */
+}
+
+.pregunta-contenedor .pregunta h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espacio entre los botones */
+    margin-top: 30px;
+}
+
+.respuestaSi,
+.respuestaNo {
+    font-size: 18px;
+    padding: 1rem 3rem; /* Padding uniforme */
+    background-color: #E36414;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex: 1; /* Permite que los botones se estiren por igual */
+    max-width: 200px; /* Ancho máximo para evitar que crezcan demasiado */
+}
+
+.respuestaSi:hover,
+.respuestaNo:hover {
+    background-color: #e68a1f;
+}
+
+/*
+  ==========================================
+  SECCIÓN DE BÚSQUEDA
+  ==========================================
+*/
+.SeccionBuscarNit {
+    display: none;
+    background-color: #001b41;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 40px auto; /* Centrado automático con margen vertical */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    width: 90%; /* Ancho flexible */
+    text-align: left;
+}
+
+.buscartxt {
+    color: white;
+    margin-bottom: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#inputBusquedaNit {
+    width: 100%; /* Ocupa el 100% del contenedor */
+    padding: 12px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#listaClientes .cliente {
+    display: flex;
+    flex-direction: column; /* Apila los elementos en móviles */
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    gap: 10px;
+}
+
+.cliente-info {
+    font-size: 16px;
+    color: #333;
+}
+
+.boton-agregar {
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    width: 100%; /* Ocupa todo el ancho en móviles */
+    max-width: 150px; /* Limita el ancho en escritorios */
+}
+
+.boton-agregar:hover {
+    background-color: black;
+    transition-duration: 0.5s;
+}
+
+/*
+  ==========================================
+  MEDIA QUERIES PARA PANTALLAS GRANDES
+  ==========================================
+*/
+@media (min-width: 768px) {
+    .pregunta-contenedor .pregunta h1 {
+        font-size: 2rem;
+    }
+
+    .opciones {
+        flex-direction: row;
+        gap: 50px;
+    }
+
+    #listaClientes .cliente {
+        flex-direction: row; /* Vuelve a la disposición horizontal */
+    }
+
+    .boton-agregar {
+        width: auto;
+    }
+}

@@ -1,0 +1,636 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.title {
+    color: #0A1D37;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: #0A1D37;
+    margin-bottom: 2rem;
+    padding: 30px;
+}
+
+.message-box {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+.message-box.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message-box.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+/* Accordion */
+.accordion {
+    background-color: #f39c3e;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+}
+
+.accordion-header {
+    background-color: #e68a1f;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    color: #fff;
+    font-size: 23px;
+    border-radius: 3px;
+}
+
+.accordion-header::after {
+    content: '▼';
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion.active .accordion-header::after {
+    content: '▲';
+    transform: rotate(180deg);
+}
+
+.accordion-body {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.accordion.active .accordion-body {
+    max-height: none;
+    padding: 1rem;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.order-table {
+    border-collapse: collapse;
+}
+
+.order-table thead {
+    background-color: #0A1D37;
+    color: white;
+}
+
+.order-table tbody {
+    background-color: white;
+    text-align: center;
+}
+
+.order-table input {
+    text-align: center;
+    padding: 1rem 1, 2rem;
+    margin: 3px;
+    border: none;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.order-table input:focus {
+    outline: none;
+    border-color: #0A1D37;
+    box-shadow: 0 0 5px rgba(20, 75, 227, 0.5);
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.input-field {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #0A1D37;
+    box-shadow: 0 0 5px rgba(227, 100, 20, 0.5);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 0.5rem;
+}
+
+.permisos-extra-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.permisos-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.permisos-especificar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-fieldLargo {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.btnAñadirPermiso,
+.btnAñadirDContables,
+.btnAñadirFinanciamiento {
+    background-color: #E36414;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+.btnAñadirPermiso:hover,
+.btnAñadirDContables:hover,
+.btnAñadirFinanciamiento:hover {
+    background-color: #c05510;
+}
+
+.buttons-form {
+    background-color: #0A1D37;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+.buttons-form:hover {
+    background-color: #133667;
+}
+
+/* Modal */
+.modalAgregar {
+    display: none;
+    /* oculto al inicio */
+    justify-content: center;
+    align-items: center;
+    /* centra vertical */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.modalAgregar.show {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #ffffff, #f9f9f9);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    animation: fadeInScale 0.3s ease;
+    margin: auto;
+    /* ✅ centra con flex */
+    position: static;
+    /* ✅ que no se salga del flujo */
+    margin-top: 180px;
+}
+
+/* Encabezado con un borde inferior más elegante */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0A1D37;
+    letter-spacing: 0.5px;
+}
+
+/* Botón de cerrar más estilizado */
+.btn-close {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.btn-close:hover {
+    color: #fff;
+    background-color: #E36414;
+}
+
+/* Inputs dentro del modal */
+.modal-content input {
+    padding: 0.85rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.modal-content input:focus {
+    border-color: #E36414;
+    box-shadow: 0 0 6px rgba(227, 100, 20, 0.4);
+    outline: none;
+}
+
+/* Botón principal */
+.modal-content button.contrast {
+    background: linear-gradient(135deg, #E36414, #c05510);
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-content button.contrast:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(227, 100, 20, 0.4);
+}
+
+/* Animación de entrada */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-submit,
+.btn-cancel {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #27ae60;
+}
+
+.btn-cancel {
+    background-color: #e74c3c;
+}
+
+.btn-cancel:hover {
+    background-color: #c0392b;
+}
+
+/* New Styles for the CRUD List */
+.pedidos-list-container {
+    margin-top: 3rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pedidos-list-container h2 {
+    text-align: center;
+    color: #E36414;
+    margin-bottom: 1.5rem;
+}
+
+.pedidos-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.pedido-item {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pedido-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.pedido-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.pedido-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}
+
+.btn-edit,
+.btn-delete,
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn {
+    background-color: #0A1D37;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #3498db;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .menu-overlay.active {
+        display: block;
+    }
+}
+
+;
+
+#tbCargos th {
+    background-color: #0A1D37;
+    color: white;
+    text-align: center;
+    /* centra texto */
+    vertical-align: middle;
+    /* centra vertical */
+    width: auto;
+}
+
+/* ==== Selects (cmb) del apartado de Cargos ==== */
+.order-table select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.order-table select:focus {
+    border-color: #0A1D37;
+    box-shadow: 0 0 6px rgba(10, 29, 55, 0.3);
+    outline: none;
+}
+
+.order-table td {
+    padding: 0.75rem;
+}
+
+/* Botón Añadir Cargo */
+.btnAñadirCargo {
+    background-color: #E36414;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnAñadirCargo:hover {
+    background-color: #c05510;
+}
+
+.btn-descargar {
+    background-color: #0A1D37;
+    /* Azul */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-descargar:hover {
+    background-color: rgb(0, 17, 36);
+    /* Azul más oscuro al pasar el mouse */
+}
+
+.order-table th {
+    background-color: #0A1D37;
+    color: white;
+    text-align: center;
+    /* centra texto */
+    vertical-align: middle;
+    /* centra vertical */
+    width: auto;
+    padding: 15px;
+}
+
+/* ====== Responsive Acordeón Financiamientos ====== */
+
+/* Contenedor con scroll horizontal en tablets/móviles */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* ---- Diseño tipo tarjeta en móviles ---- */
+@media (max-width: 600px) {
+  .order-table,
+  .order-table thead,
+  .order-table tbody,
+  .order-table th,
+  .order-table td,
+  .order-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .order-table thead {
+    display: none; /* Ocultar encabezado */
+  }
+
+  .order-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }     
+
+  .order-table td {
+    text-align: left;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Etiquetas antes de los inputs para simular encabezados */
+  .order-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #0A1D37;
+    flex: 1;
+    margin-right: 1rem;
+  }
+
+  .order-table input {
+    flex: 2;
+    margin: 0;
+  }
+}
+
+a.logo-text,
+a.logo-text:hover,
+a.logo-text:visited,
+a.logo-text:active {
+  text-decoration: none !important;
+}

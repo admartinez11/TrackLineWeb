@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url("../img/fondo.PNG");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    background-color: #0A1D37;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.logo-icon {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+    border-radius: 5px;
+    position: relative;
+}
+
+.logo img {
+    width: 75px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Menú Hamburguesa */
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.menu-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Animación del menú hamburguesa cuando está activo */
+.menu-toggle.active .menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .menu-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Overlay del menú */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menú lateral */
+.side-menu {
+    position: fixed;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: #0A1D37;
+    z-index: 999;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.menu-header {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+    background-color: #E36414;
+}
+
+.menu-header h3 {
+    color: white;
+    font-size: 20px;
+    text-align: center
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: left;
+}
+
+.menu-item i {
+    padding-right: 10px;
+}
+
+.menu a:hover {
+    background-color: #EB8125;
+}
+
+.close {
+    align-items: center;
+    justify-content: center;
+}
+
+.close i {
+    padding-right: 10px;
+}
+
+.cerrarSesion {
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    background-color: #D72638;
+    padding: 20px;
+    margin-top: 100px;
+    margin-left: 60px;
+    border-style: none;
+}
+
+.cerrarSesion:hover {
+    border-color: white;
+    transform: scale(1.1);
+    transition: background 0.5s ease;
+    background-color: #0A1D37;
+    color: #fff;
+}
+
+.table {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+#ordersTable th {
+    background-color: #0A1D37;
+    color: white;
+    text-align: center;
+}
+
+.btn-success {
+  background-color: #EB8125 !important; /* color de fondo */
+  border-color: #EB8125 !important;     /* color del borde */
+}
+
+.btn-success:hover {
+  background-color: #cf6d1f !important; /* más oscuro al pasar mouse */
+  border-color: #cf6d1f !important;
+}
+
+.btn-primary,
+.btn-secondary {
+    border-radius: 2rem;
+}
+
+.modal-content {
+    border-radius: 1rem;
+}
+
+
+
+
+
+.container {
+    padding: 30px;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+.container h1 {
+    margin-bottom: 30px;
+    color: #0A1D37;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.search-filter {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#inputBusquedaEmpleado {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#buscarProducto {
+    font-size: 17px;
+    padding: 10px;
+}
+
+.buscartxt {
+    color: #EB8125;
+    font-size: 23px;
+    margin-top: 5px;
+}
+
+#formClientes {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#listaEmpleados.employee {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.employee-info {
+    font-size: 17px;
+}
+
+.boton-agregar {
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.boton-actualizar{
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.boton-eliminar{
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.boton-agregar:hover {
+  background-color:black;
+  transition-duration: 0.5s;
+}
+
+#listaEmpleados .empleado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.empleado-botones {
+  display: flex;
+  gap: 10px;  
+}
+
+.oculto {
+    display: none; /* Oculta el contenido por defecto */
+}
+
+/* ==== PAGINACIÓN ==== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 4px;
+}
+
+/* Estilos base */
+.pagination .page-item .page-link {
+    border-radius: 6px;
+    margin: 0 2px;
+    color: white !important;
+    background-color: #0A1D37 !important; /* azul oscuro */
+    border: 1px solid #0A1D37 !important;
+    transition: all 0.3s ease;
+}
+
+/* Página activa */
+.pagination .page-item.active .page-link {
+    background-color: #EB8125 !important; /* naranja corporativo */
+    border-color: #EB8125 !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+/* Hover */
+.pagination .page-item .page-link:hover {
+    background-color: #ff6a00 !important; /* naranja brillante */
+    border-color: #ff6a00 !important;
+    color: white !important;
+}
+
+/* Deshabilitado */
+.pagination .page-item.disabled .page-link {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #e0e0e0 !important;
+    cursor: not-allowed;
+}

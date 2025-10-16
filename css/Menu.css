@@ -1,0 +1,239 @@
+/* ===========================
+   MENU GENERAL (COMPARTIDO)
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header */
+.header {
+    background-color: #0A1D37;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    /* 👈 en lugar de relative */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* asegúrate de definir la altura */
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.logo-icon {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+    border-radius: 5px;
+    position: relative;
+}
+
+.logo img {
+    width: 75px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Menú Hamburguesa */
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.menu-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Animación del menú hamburguesa cuando está activo */
+.menu-toggle.active .menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .menu-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Overlay del menú */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menú lateral */
+.side-menu {
+    position: fixed;
+    top: 100px;
+    /* 👈 igual a la altura del header */
+    right: -300px;
+    width: 300px;
+    height: calc(100vh - 70px);
+    /* ocupa todo el alto menos el header */
+    background: #0A1D37;
+    z-index: 9999;
+    /* mayor para que no quede tapado */
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    /* scroll si hay muchos items */
+    font-size: 17px;
+}
+
+
+.side-menu.active {
+    right: 0;
+}
+
+.menu-header {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+    background-color: #E36414;
+}
+
+.menu-header h3 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: left;
+}
+
+.menu-item i {
+    padding-right: 10px;
+}
+
+.menu a:hover {
+    background-color: #EB8125;
+}
+
+.close {
+    align-items: center;
+    justify-content: center;
+}
+
+.close i {
+    padding-right: 10px;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    flex-direction: column;
+    margin-left: 20px;
+    /* sangría jerárquica */
+}
+
+.submenu .menu-item {
+    font-size: 0.95em;
+    padding-left: 15px;
+}
+
+.flecha {
+    float: right;
+}
+
+/* Botón Cerrar Sesión */
+.cerrarSesion {
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+    background-color: #D72638;
+    padding: 10px 20px;
+    width: 80%;
+    margin: 30px auto 0 auto;
+    border-style: none;
+    text-align: center;
+    display: block;
+}
+
+.cerrarSesion:hover {
+    border-color: white;
+    transform: scale(1.1);
+    transition: background 0.5s ease;
+    background-color: #0A1D37;
+    color: #fff;
+}
+
+.sidebar {
+    position: relative;
+    height: 100vh;
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: 20px;
+    /* separación desde abajo */
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+main {
+    padding-top: 70px;
+    /* espacio del header */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url("../img/fondo.PNG");
+    background-size: cover;
+    background-position: center;
+    /* Cambio a 'center' para mejor visualización en móviles */
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* Asegura que el body ocupe al menos la altura de la pantalla */
+    padding-top: 100px;
+    /* igual a la altura del header */
+}
+
+a {
+    text-decoration: none; /* ❌ quita el subrayado */
+}

@@ -1,0 +1,204 @@
+
+.table {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+#transportsTable thead th {
+    background-color: #0A1D37;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-success {
+    background-color: #EB8125 !important;
+    /* color de fondo */
+    border-color: #EB8125 !important;
+    /* color del borde */
+}
+
+.btn-success:hover {
+    background-color: #cf6d1f !important;
+    /* más oscuro al pasar mouse */
+    border-color: #cf6d1f !important;
+}
+
+.btn-primary,
+.btn-secondary {
+    border-radius: 2rem;
+}
+
+.modal-content {
+    border-radius: 1rem;
+}
+
+.btn-darkblue {
+  background-color: #0A1D37; 
+  color: #fff;              
+  border: none;
+}
+
+.btn-darkblue:hover {
+  background-color: #071324; /* un poco mÃ¡s oscuro para hover */
+  color: #fff;
+}
+
+
+
+
+
+.container {
+    padding: 30px;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+.container h1 {
+    margin-bottom: 30px;
+    color: #0A1D37;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.search-filter {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#inputBusquedaTransporte {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#buscarTransportes {
+    font-size: 17px;
+    padding: 10px;
+}
+
+.buscartxt {
+    color: #EB8125;
+    font-size: 23px;
+    margin-top: 5px;
+}
+
+#transportForm {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#listaTransportes.transport {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.transport-info {
+    font-size: 17px;
+}
+
+.boton-agregar {
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.boton-actualizar {
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.boton-eliminar {
+    background-color: #ff6a00;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.boton-agregar:hover {
+    background-color: black;
+    transition-duration: 0.5s;
+}
+
+#listaTransporte .transporte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.transporte-botones {
+    display: flex;
+    gap: 10px;
+}
+
+/* ==== PAGINACIÓN ==== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 4px;
+}
+
+/* Estilos base */
+.pagination .page-item .page-link {
+    border-radius: 6px;
+    margin: 0 2px;
+    color: white !important;
+    background-color: #0A1D37 !important; /* azul oscuro */
+    border: 1px solid #0A1D37 !important;
+    transition: all 0.3s ease;
+}
+
+/* Página activa */
+.pagination .page-item.active .page-link {
+    background-color: #EB8125 !important; /* naranja corporativo */
+    border-color: #EB8125 !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+/* Hover */
+.pagination .page-item .page-link:hover {
+    background-color: #ff6a00 !important; /* naranja brillante */
+    border-color: #ff6a00 !important;
+    color: white !important;
+}
+
+/* Deshabilitado */
+.pagination .page-item.disabled .page-link {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #e0e0e0 !important;
+    cursor: not-allowed;
+}

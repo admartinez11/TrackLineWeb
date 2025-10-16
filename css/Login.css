@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
+/* ==========================================
+   ESTILOS BASE (MÓVIL PRIMERO: Hasta 767px)
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; 
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../img/Camioncard.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px; 
+}
+
+/* HEADER */
+.header {
+    background-color: #0A1D37;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 60px; 
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* MAIN CONTENT (Área de Login) */
+main {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px; 
+    padding-bottom: 50px; 
+    min-height: calc(100vh - 40px); 
+}
+
+.content {
+    display: flex;
+    flex-direction: column; /* Diseño Apilado */
+    justify-content: center;
+    align-items: center;
+    width: 95%; 
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 30px; 
+    padding: 20px 10px;
+}
+
+/* FRASE LATERAL */
+.frase {
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0 15px; 
+    text-align: center;
+    /* Limitamos el ancho de la frase para que no se estire demasiado en móvil */
+    max-width: 500px; 
+}
+
+.frase h1 {
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+/* FORMULARIO */
+.form-container {
+    background-color: #0A1D37;
+    border-radius: 10px;
+    width: 95%; 
+    max-width: 400px; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px; 
+}
+
+.form-content {
+    width: 100%;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo img {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.titulo h1 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.form-group i {
+    padding-right: 5px;
+}
+
+.input-field {
+    padding: 12px;
+    width: 100%; 
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+}
+
+.form-remember {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9rem; 
+}
+
+.form-remember input {
+    margin-right: 5px;
+    height: 18px;
+    width: 18px;
+}
+
+.form-remember p {
+    font-weight: 500;
+    color: #fff;
+    margin-right: auto;
+    white-space: nowrap; 
+}
+
+.form-remember a {
+    font-weight: bold;
+    color: #EB8125;
+    text-decoration: none;
+    text-align: right;
+    white-space: nowrap;
+    margin-top: 5px; 
+    /* En móvil, hacemos que el enlace ocupe toda la línea si es necesario */
+    flex-basis: 100%; 
+}
+
+.form-remember a:hover {
+    text-decoration: underline;
+}
+
+.btnIngresar {
+    padding: 15px 25px;
+    background-color: #fff;
+    color: #0A1D37;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; 
+    margin-top: 20px;
+}
+
+.btnIngresar i {
+    padding-left: 8px;
+}
+
+.form-container .btnIngresar:hover {
+    background-color: #EB8125;
+    color: #fff;
+    transform: scale(1.02);
+}
+
+/* FOOTER */
+footer {
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    background-color: #0A1D37;
+    color: white;
+    width: 100%;
+}
+
+
+/* ==========================================
+   MEDIA QUERY: TABLET (768px - 991px)
+   Mantiene el diseño apilado pero con más espacio.
+   ========================================== 
+*/
+@media (min-width: 768px) {
+    .header {
+        padding: 15px 30px; 
+    }
+
+    .logo img {
+        width: 70px; 
+    }
+
+    .frase {
+        font-size: 1.5rem;
+    }
+
+    .frase h1 {
+        font-size: 2rem;
+    }
+    
+    .form-container {
+        max-width: 500px; /* Le damos un poco más de ancho al formulario */
+        padding: 40px; 
+    }
+
+    /* El enlace vuelve a la línea con los otros elementos */
+    .form-remember {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    
+    .form-remember a {
+        flex-basis: auto; 
+        margin-top: 0;
+    }
+}
+
+
+/* ==========================================
+   MEDIA QUERY: ESCRITORIO (992px en adelante)
+   Aquí el diseño ya puede ser LADO A LADO sin aplastarse.
+   ========================================== 
+*/
+@media (min-width: 992px) {
+
+    .header {
+        padding: 15px 50px; 
+    }
+
+    .logo img {
+        width: 75px; 
+    }
+
+    .content {
+        flex-direction: row; /* Diseño Lado a Lado */
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 50px;
+        gap: 50px;
+    }
+
+    .frase {
+        flex: 1;
+        max-width: 45%; /* Ocupa un buen espacio */
+        text-align: left;
+    }
+
+    .frase h1 {
+        font-size: 2.5rem; 
+    }
+
+    .form-container {
+        flex: 0 0 450px; /* Ancho fijo para el formulario */
+        padding: 50px; 
+    }
+
+    .btnIngresar {
+        width: 80%; /* El botón es más pequeño que el 100% del form */
+        max-width: 250px;
+        margin: 25px auto 0 auto; /* Centrado */
+    }
+}

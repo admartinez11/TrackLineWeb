@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pedidos Aduanales-Trackline</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/AddNit.css" />
+  <link rel="stylesheet" href="css/Menu.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="img/CamionLogo.png" alt="" />
+      <a href="index.html" class="logo-text">TrackLine</a>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+    </div>
+  </header>
+
+  <!-- Overlay del menú -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- Menú lateral -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h3><b>Menú Principal</b></h3>
+    </div>
+    <div class="menu">
+      <a href="AddNit.html" class="menu-item"><i class="fa-solid fa-inbox"></i>Pedidos Aduanales</a>
+      <a href="AllOrders.html" class="menu-item"><i class="fa-solid fa-calendar-days"></i>Órdenes de
+        Servicio</a>
+
+      <!-- Botón principal que mostrará opciones -->
+      <a href="#" id="boton-activar" class="menu-item">
+        <i class="fa-solid fa-user-gear"></i> Administración
+        <i class="fa-solid fa-chevron-down flecha"></i>
+      </a>
+
+      <!-- Botones ocultos inicialmente -->
+      <div id="contenido-oculto" class="submenu">
+        <a href="Clients.html" class="menu-item oculto"><i class="fa-solid fa-users"></i> Clientes</a>
+        <a href="Drivers.html" class="menu-item oculto"><i class="fa-solid fa-id-card"></i> Transportistas</a>
+        <a href="Users.html" class="menu-item oculto"><i class="fa-solid fa-user"></i> Usuarios</a>
+        <a href="Employees.html" class="menu-item oculto"><i class="fa-solid fa-briefcase"></i> Empleados</a>
+        <a href="TransportService.html" class="menu-item oculto"><i class="fa-solid fa-truck"></i> Servicio
+          Transporte</a>
+        <a href="Transport.html" class="menu-item oculto"><i class="fa-solid fa-inbox"></i> Transporte</a>
+
+      </div>
+    </div>
+    <div class="close">
+      <button id="btncerrarSesion" class="cerrarSesion"><i class="fa-solid fa-xmark"></i>Cerrar Sesion</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="pregunta-contenedor">
+      <div class="pregunta">
+        <h1><b>¿Desea hacer un nuevo pedido aduanal?</b></h1>
+      </div>
+      <div class="opciones">
+        <button class="respuestaSi" id="btnSi">Si</button>
+        <button class="respuestaNo" id="btnNo">No</button>
+      </div>
+    </div>
+
+    <section id="busquedaNit" class="SeccionBuscarNit">
+      <h3 class="buscartxt"><b>Buscar cliente</b></h3>
+      <input type="text" id="inputBusquedaNit" placeholder="Ingrese el NIT o el nombre del cliente"
+        onkeyup="filtrarClientes()" />
+      <form id="formClientes">
+        <!-- Aquí se cargarán los clientes dinámicamente -->
+        <div id="listaClientes"></div>
+      </form>
+    </section>
+
+
+  </main>
+
+  <script src="js/FuncionamientoHeader/AddNit.js"></script>
+  <script type="module" src="js/Controllers/AddNitController.js"></script>
+  <script type="module" src="js/ValidarRol.js"></script>
+
+
+</body>
+
+</html>

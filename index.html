@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link rel="stylesheet" href="css/HomePage.css" />
+  <title>HomePage-Trackline</title>
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="img/CamionLogo.png" alt="" />
+      <a href="index.html" class="logo-text">TrackLine</a>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+    </div>
+  </header>
+
+  <!-- Overlay del menú -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- Menú lateral -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h3><b>Menú Principal</b></h3>
+    </div>
+    <div class="menu">
+      <a href="AddNit.html" class="menu-item"><i class="fa-solid fa-inbox"></i>Pedidos Aduanales</a>
+      <a href="AllOrders.html" class="menu-item"><i class="fa-solid fa-calendar-days"></i>Órdenes de
+        Servicio</a>
+
+      <!-- Botón principal que mostrará opciones -->
+      <a href="#" id="boton-activar" class="menu-item">
+        <i class="fa-solid fa-user-gear"></i> Administración
+        <i class="fa-solid fa-chevron-down flecha"></i>
+      </a>
+
+      <!-- Botones ocultos inicialmente -->
+      <div id="contenido-oculto" class="submenu">
+        <a href="Clients.html" class="menu-item oculto"><i class="fa-solid fa-users"></i> Clientes</a>
+        <a href="Drivers.html" class="menu-item oculto"><i class="fa-solid fa-id-card"></i> Transportistas</a>
+        <a href="Users.html" class="menu-item oculto"><i class="fa-solid fa-user"></i> Usuarios</a>
+        <a href="Employees.html" class="menu-item oculto"><i class="fa-solid fa-briefcase"></i> Empleados</a>
+        <a href="TransportService.html" class="menu-item oculto"><i class="fa-solid fa-truck"></i> Servicio
+          Transporte</a>
+        <a href="Transport.html" class="menu-item oculto"><i class="fa-solid fa-inbox"></i> Transporte</a>
+
+      </div>
+    </div>
+    <div class="close">
+      <button id="btncerrarSesion" class="cerrarSesion"><i class="fa-solid fa-xmark"></i>Cerrar Sesion</button>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Hero principal -->
+    <div class="seccionprincipal">
+      <img src="img/indeximg.png" alt="Imagen de camion SGL" />
+      <h1 class="titulo-principal">RASTREA TUS ENTREGAS EN TIEMPO REAL, SIN COMPLICACIONES</h1>
+    </div>
+
+    <!-- Separador azul -->
+    <div class="separador"></div>
+
+    <!-- Qué ofrecemos -->
+    <div class="ContenidoAdicional">
+      <h2><b>¿Qué ofrecemos?</b></h2>
+      <div class="garantias-container">
+        <div class="garantias">
+          <img src="img/camion.png" alt="Camion">
+          <h3>Entrega Segura</h3>
+        </div>
+        <div class="garantias">
+          <img src="img/ruta.png" alt="GPS">
+          <h3>Tracking en tiempo real</h3>
+        </div>
+        <div class="garantias">
+          <img src="img/reloj-de-pared.png" alt="Reloj">
+          <h3>Siempre a tiempo</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Servicios extras -->
+    <section class="servicios">
+      <h2><b>Nuestros Servicios</b></h2>
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <i class="fa-solid fa-warehouse"></i>
+          <h3>Almacenamiento</h3>
+          <p>Contamos con bodegas seguras y modernas para mantener tu mercancía protegida.</p>
+        </div>
+        <div class="servicio-card">
+          <i class="fa-solid fa-globe"></i>
+          <h3>Cobertura Nacional</h3>
+          <p>Llegamos a cada rincón del país con rapidez y seguridad.</p>
+        </div>
+        <div class="servicio-card">
+          <i class="fa-solid fa-headset"></i>
+          <h3>Soporte 24/7</h3>
+          <p>Nuestro equipo siempre disponible para resolver cualquier duda.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonios">
+      <h2><b>Lo que dicen nuestros clientes</b></h2>
+      <div class="testimonio">
+        <p>"Con esta app, puedo ver el progreso de mi producto en todo momento"</p>
+        <span>-Cliente anonimo</span>
+      </div>
+      <div class="testimonio">
+        <p>"Trackline es el mejor sistema de rastreo"</p>
+        <span>- Gerente de la empresa SGL</span>
+      </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="cta">
+      <h2><b>¿Listo para realizar tu pedido?</b></h2>
+      <a href="AddNit.html" class="btn-cta">¡Haz tu pedido ahora!</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 TrackLine - Todos los derechos reservados</p>
+    <div class="redes">
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script src="js/FuncionamientoHeader/HomePage.js" defer></script>
+  <script type="module" src="js/ValidarRol.js" defer></script>
+
+</body>
+
+</html>

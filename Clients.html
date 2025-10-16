@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/Clients.css">
+    <link rel="stylesheet" href="css/Menu.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/CamionLogo.png" alt="" />
+            <a href="index.html" class="logo-text">TrackLine</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
+    </header>
+
+    <!-- Overlay del menú -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Menú lateral -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h3><b>Menú Principal</b></h3>
+        </div>
+        <div class="menu">
+            <a href="AddNit.html" class="menu-item"><i class="fa-solid fa-inbox"></i>Pedidos Aduanales</a>
+            <a href="AllOrders.html" class="menu-item"><i class="fa-solid fa-calendar-days"></i>Órdenes de
+                Servicio</a>
+
+            <!-- Botón principal que mostrará opciones -->
+            <a href="#" id="boton-activar" class="menu-item">
+                <i class="fa-solid fa-user-gear"></i> Administración
+                <i class="fa-solid fa-chevron-down flecha"></i>
+            </a>
+
+            <!-- Botones ocultos inicialmente -->
+            <div id="contenido-oculto" class="submenu">
+                <a href="Clients.html" class="menu-item oculto"><i class="fa-solid fa-users"></i> Clientes</a>
+                <a href="Drivers.html" class="menu-item oculto"><i class="fa-solid fa-id-card"></i> Transportistas</a>
+                <a href="Users.html" class="menu-item oculto"><i class="fa-solid fa-user"></i> Usuarios</a>
+                <a href="Employees.html" class="menu-item oculto"><i class="fa-solid fa-briefcase"></i> Empleados</a>
+                <a href="TransportService.html" class="menu-item oculto"><i class="fa-solid fa-truck"></i> Servicio
+                    Transporte</a>
+                <a href="Transport.html" class="menu-item oculto"><i class="fa-solid fa-inbox"></i> Transporte</a>
+
+            </div>
+        </div>
+        <div class="close">
+            <button id="btncerrarSesion" class="cerrarSesion"><i class="fa-solid fa-xmark"></i>Cerrar Sesion</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1><b>Lista de Clientes</b></h1>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="buscartxt me-2"><b>Buscar cliente</b></h5>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#clientModal" id="btnAddClient">
+                <i class="bi bi-plus-lg me-1"></i> Agregar
+            </button>
+        </div>
+
+        <input type="text" id="inputBusquedaCliente" placeholder="Ingrese el nombre del cliente"
+            onkeyup="filtrarClientes()" />
+        <div id="listaClientes"></div>
+
+        <!-- Selector de tamaño -->
+        <!--<div class="d-flex justify-content-start align-items-center mb-3">
+            <label for="pageSize" class="form-label mb-0">Mostrar:</label>
+            <select id="pageSize" class="form-select w-auto ms-2">
+                <option value="2">2</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+            </select>
+        </div>-->
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle text-center" id="clientsTable">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">NIT Cliente</th>
+                        <th class="text-center">Tipo Cliente</th>
+                        <th class="text-center">Nombre Completo</th>
+                        <th class="text-center">Nombre Empresa</th>
+                        <th class="text-center">Teléfono</th>
+                        <th class="text-center">Correo</th>
+                        <th class="text-center">Cod Empresa</th>
+                        <th class="text-center">Usuario</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td colspan="5">Actualmente no hay clientes</td>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Contenedor de paginación -->
+        <div class="d-flex justify-content-end mt-3">
+            <nav>
+                <ul id="pagination" class="pagination"></ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Modal Crear/Editar Cliente -->
+    <div class="modal fade" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="clientModalLabel">Agregar Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <form id="clientForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="clientNit" class="form-label">NIT<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="clientNit" placeholder="NIT del cliente"
+                                name="clientNit" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientType" class="form-label">Tipo Cliente<span
+                                    style="color:red">*</span></label>
+                            <select class="form-select" id="clientType" name="clientType" required>
+                                <option value="">Seleccione</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="clientName" placeholder="Nombre completo"
+                                name="clientName" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientLastName" class="form-label">Nombre Empresa</label>
+                            <input type="text" class="form-control" id="clientLastName" placeholder="Nombre empresa"
+                                name="clientLastName" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientPhone" class="form-label">Teléfono<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="clientPhone" placeholder="Teléfono del cliente"
+                                name="clientPhone" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientEmail" class="form-label">Correo<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="clientEmail" placeholder="Correo del cliente"
+                                name="clientEmail" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientCode" class="form-label">Codígo Empresa</label>
+                            <input type="text" class="form-control" id="clientCode" placeholder="Código de la empresa"
+                                name="clientCode" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="clientUser" class="form-label">Usuario<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="clientUser" placeholder="Usuario del cliente"
+                                name="clientUser" />
+                        </div>
+
+
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-success" id="saveClient">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<!--Importacion de Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+<!--Importacion de SweetAlert-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!--JS-->
+<script src="js/FuncionamientoHeader/Client.js"></script>
+
+<script type="module" src="js/Controllers/ClientController.js"></script>
+
+</html>

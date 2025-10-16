@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios de Transporte</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/TransportService.css" />
+  <link rel="stylesheet" href="css/Menu.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <img src="img/CamionLogo.png" alt="Logo TrackLine" />
+      <a href="index.html" class="logo-text">TrackLine</a>
+    </div>
+    <div class="menu-toggle" id="menuToggle">
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+      <div class="menu-line"></div>
+    </div>
+  </header>
+
+  <!-- Overlay del menú -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- Menú lateral -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <h3><b>Menú Principal</b></h3>
+    </div>
+    <div class="menu">
+      <a href="AddNit.html" class="menu-item"><i class="fa-solid fa-inbox"></i>Pedidos Aduanales</a>
+      <a href="AllOrders.html" class="menu-item"><i class="fa-solid fa-calendar-days"></i>Órdenes de
+        Servicio</a>
+
+      <!-- Botón principal que mostrará opciones -->
+      <a href="#" id="boton-activar" class="menu-item">
+        <i class="fa-solid fa-user-gear"></i> Administración
+        <i class="fa-solid fa-chevron-down flecha"></i>
+      </a>
+
+      <!-- Botones ocultos inicialmente -->
+      <div id="contenido-oculto" class="submenu">
+        <a href="Clients.html" class="menu-item oculto"><i class="fa-solid fa-users"></i> Clientes</a>
+        <a href="Drivers.html" class="menu-item oculto"><i class="fa-solid fa-id-card"></i> Transportistas</a>
+        <a href="Users.html" class="menu-item oculto"><i class="fa-solid fa-user"></i> Usuarios</a>
+        <a href="Employees.html" class="menu-item oculto"><i class="fa-solid fa-briefcase"></i> Empleados</a>
+        <a href="TransportService.html" class="menu-item oculto"><i class="fa-solid fa-truck"></i> Servicio
+          Transporte</a>
+        <a href="Transport.html" class="menu-item oculto"><i class="fa-solid fa-inbox"></i> Transporte</a>
+
+      </div>
+    </div>
+    <div class="close">
+      <button id="btncerrarSesion" class="cerrarSesion"><i class="fa-solid fa-xmark"></i>Cerrar Sesion</button>
+    </div>
+  </nav>
+
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <h1><b>Servicios de Transporte</b></h1>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="buscartxt me-2"><b>Buscar servicio</b></h5>
+      <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#serviceModal" id="btnAddService">
+        <i class="bi bi-plus-lg me-1"></i> Agregar
+      </button>
+    </div>
+
+    <input type="text" id="inputBusquedaServT" placeholder="Ingrese placa" onkeyup="filtrarServT()" />
+    <div id="listaServT"></div>
+
+    <div class="table-responsive mt-3">
+      <table class="table table-hover align-middle text-center" id="servicesTable">
+        <thead class="table-dark">
+          <tr>
+            <th class="text-center">ID Servicio</th>
+            <th class="text-center">Placa</th>
+            <th class="text-center">Tarjeta de Circulación</th>
+            <th class="text-center">Capacidad</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" class="text-center">Actualmente no hay servicios</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-end mt-3">
+        <nav>
+          <ul id="pagination" class="pagination"></ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Crear/Editar Servicio -->
+  <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="serviceModalLabel">Agregar Servicio</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <form id="serviceForm">
+          <input type="hidden" id="serviceId" name="serviceId" />
+
+          <div class="mb-3">
+            <label for="servicePlaca" class="form-label">Placa<span style="color:red">*</span></label>
+            <input type="text" class="form-control" id="servicePlaca" name="servicePlaca" placeholder="Ej. P123-456"
+              required />
+          </div>
+
+          <div class="mb-3">
+            <label for="serviceTarjeta" class="form-label">Tarjeta de Circulación<span
+                style="color:red">*</span></label>
+            <input type="text" class="form-control" id="serviceTarjeta" name="serviceTarjeta" placeholder="Tarjeta"
+              required />
+          </div>
+
+          <div class="mb-3">
+            <label for="serviceCapacidad" class="form-label">Capacidad<span style="color:red">*</span></label>
+            <input type="number" class="form-control" id="serviceCapacidad" name="serviceCapacidad"
+              placeholder="Capacidad" required />
+          </div>
+
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Controlador -->
+  <script type="module" src="js/Controllers/TransportServiceController.js"></script>
+
+  <script src="js/FuncionamientoHeader/TransportService.js"></script>
+</body>
+
+</html>

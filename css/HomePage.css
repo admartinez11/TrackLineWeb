@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header */
+.header {
+    background-color: #0A1D37;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    /* 👈 en lugar de relative */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* asegúrate de definir la altura */
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.logo-icon {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+    border-radius: 5px;
+    position: relative;
+}
+
+.logo img {
+    width: 75px;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Menú Hamburguesa */
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+}
+
+.menu-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Animación del menú hamburguesa cuando está activo */
+.menu-toggle.active .menu-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active .menu-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .menu-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Overlay del menú */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menú lateral */
+.side-menu {
+    position: fixed;
+    top: 100px;
+    /* 👈 igual a la altura del header */
+    right: -300px;
+    width: 300px;
+    height: calc(100vh - 70px);
+    /* ocupa todo el alto menos el header */
+    background: #0A1D37;
+    z-index: 9999;
+    /* mayor para que no quede tapado */
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    /* scroll si hay muchos items */
+    font-size: 17px;
+}
+
+
+.side-menu.active {
+    right: 0;
+}
+
+.menu-header {
+    padding: 20px;
+    border-bottom: 1px solid #444;
+    background-color: #E36414;
+}
+
+.menu-header h3 {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: left;
+}
+
+.menu-item i {
+    padding-right: 10px;
+}
+
+.menu a:hover {
+    background-color: #EB8125;
+}
+
+.close {
+    align-items: center;
+    justify-content: center;
+}
+
+.close i {
+    padding-right: 10px;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    flex-direction: column;
+    margin-left: 20px;
+    /* sangría jerárquica */
+}
+
+.submenu .menu-item {
+    font-size: 0.95em;
+    padding-left: 15px;
+}
+
+.flecha {
+    float: right;
+}
+
+/* Botón Cerrar Sesión */
+.cerrarSesion {
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+    background-color: #D72638;
+    padding: 10px 20px;
+    width: 80%;
+    margin: 30px auto 0 auto;
+    border-style: none;
+    text-align: center;
+    display: block;
+}
+
+.cerrarSesion:hover {
+    border-color: white;
+    transform: scale(1.1);
+    transition: background 0.5s ease;
+    background-color: #0A1D37;
+    color: #fff;
+}
+
+.sidebar {
+    position: relative;
+    height: 100vh;
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: 20px;
+    /* separación desde abajo */
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+main {
+    padding-top: 0;
+    /* espacio del header */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* ocupa toda la altura */
+    padding-top: 100px;
+    /* ✅ compensa el header fijo */
+    margin: 0;
+    /* quita márgenes por defecto */
+}
+
+
+/* Contenido principal */
+.seccionprincipal {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* sin restar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.seccionprincipal h1 {
+    font-size: 40px;
+    max-width: 800px;
+    z-index: 2;
+    color: white;
+    font-weight: 800;
+    line-height: 1.3;
+    padding: 0 20px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.seccionprincipal img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    filter: brightness(0.6);
+    /* oscurece para resaltar el texto */
+}
+
+.separador {
+    width: 100%;
+    height: 70px;
+    /* puedes ajustar el grosor */
+    background-color: #0A1D37;
+    /* azul oscuro */
+}
+
+.ContenidoAdicional {
+    background-color: #f6a440;
+    background: linear-gradient(135deg, #f6a440, #ff8c42);
+    padding: 30px 20px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* Para que el h2 quede arriba */
+    align-items: center;
+    padding-bottom: 70px;
+}
+
+
+.ContenidoAdicional h2 {
+    margin-bottom: 70px;
+    font-size: 28px;
+    width: 100%;
+}
+
+/* Solo las garantías en fila */
+.ContenidoAdicional .garantias-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    /* separación entre cada item */
+}
+
+.garantias-container {
+    display: flex;
+    justify-content: space-between;
+    /* separa equitativamente */
+    align-items: stretch;
+    /* todas a la misma altura */
+    gap: 20px;
+    /* espacio entre ellas */
+    width: 100%;
+}
+
+.garantias {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.garantias h3 {
+    margin: 0;
+    font-size: 21px;
+
+}
+
+.garantias img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Aparecer con scroll */
+.garantias.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efecto al pasar el mouse */
+.garantias:hover {
+    transform: translateY(-12px) scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Imagen animada */
+.garantias img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+}
+
+
+
+
+/* Servicios */
+.servicios {
+    background: #0A1D37;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.servicios h2 {
+    color: #f6a440;
+    margin-bottom: 40px;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.servicio-card {
+    background: #13294B;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.servicio-card:hover {
+    transform: translateY(-10px);
+}
+
+.servicio-card i {
+    font-size: 40px;
+    color: #f6a440;
+    margin-bottom: 15px;
+}
+
+/* Testimonios */
+.testimonios {
+    background: #f6a440;
+    padding: 60px 20px;
+    text-align: center;
+    color: white;
+}
+
+.testimonio {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-style: italic;
+}
+
+/* Call To Action */
+.cta {
+    background: #0a1d37d4;
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+}
+
+.btn-cta {
+    display: inline-block;
+    margin-top: 20px;
+    background: #f6a440;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-cta:hover {
+    background: #ff8c42;
+}
+
+/* Footer */
+.footer {
+    background: #13294B;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    margin-bottom: 0;
+    /* ✅ sin espacio */
+}
+
+.footer .redes a {
+    margin: 0 10px;
+    color: #f6a440;
+    font-size: 22px;
+    transition: color 0.3s;
+}
+
+.footer .redes a:hover {
+    color: #ff8c42;
+}
+
+a {
+    text-decoration: none;
+    /* ❌ quita el subrayado */
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animación al hacer hover en tarjetas */
+.servicio-card {
+    background: rgba(19, 41, 75, 0.9);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.servicio-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Animación del botón CTA */
+.btn-cta {
+    background: linear-gradient(135deg, #f6a440, #ff8c42);
+    border: none;
+    transition: all 0.4s ease;
+}
+
+.btn-cta:hover {
+    background: linear-gradient(135deg, #ff8c42, #f6a440);
+    transform: scale(1.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.titulo-principal {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: all 1s ease;
+}
+
+.titulo-principal.show {
+  opacity: 1;
+  transform: translateY(0);
+}

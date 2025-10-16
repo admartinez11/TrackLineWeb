@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="title">Registrar Pedido Aduanal</title>
+    <link rel="stylesheet" href="css/ServiceOrder.css">
+    <link rel="stylesheet" href="css/Menu.css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/CamionLogo.png" alt="" />
+            <a href="index.html" class="logo-text">TrackLine</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+            <div class="menu-line"></div>
+        </div>
+    </header>
+
+    <!-- Overlay del menú -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Menú lateral -->
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">
+            <h3><b>Menú Principal</b></h3>
+        </div>
+        <div class="menu">
+            <a href="AddNit.html" class="menu-item"><i class="fa-solid fa-inbox"></i>Pedidos Aduanales</a>
+            <a href="AllOrders.html" class="menu-item"><i class="fa-solid fa-calendar-days"></i>Órdenes de
+                Servicio</a>
+
+            <!-- Botón principal que mostrará opciones -->
+            <a href="#" id="boton-activar" class="menu-item">
+                <i class="fa-solid fa-user-gear"></i> Administración
+                <i class="fa-solid fa-chevron-down flecha"></i>
+            </a>
+
+            <!-- Botones ocultos inicialmente -->
+            <div id="contenido-oculto" class="submenu">
+                <a href="Clients.html" class="menu-item oculto"><i class="fa-solid fa-users"></i> Clientes</a>
+                <a href="Drivers.html" class="menu-item oculto"><i class="fa-solid fa-id-card"></i> Transportistas</a>
+                <a href="Users.html" class="menu-item oculto"><i class="fa-solid fa-user"></i> Usuarios</a>
+                <a href="Employees.html" class="menu-item oculto"><i class="fa-solid fa-briefcase"></i> Empleados</a>
+                <a href="TransportService.html" class="menu-item oculto"><i class="fa-solid fa-truck"></i> Servicio
+                    Transporte</a>
+                <a href="Transport.html" class="menu-item oculto"><i class="fa-solid fa-inbox"></i> Transporte</a>
+
+            </div>
+        </div>
+        <div class="close">
+            <button id="btncerrarSesion" class="cerrarSesion"><i class="fa-solid fa-xmark"></i>Cerrar Sesion</button>
+        </div>
+    </nav>
+
+
+    <main class="container">
+        <h1><b>Registrar nuevo pedido Aduanal</b></h1>
+        <!-- Contenedor para mostrar mensajes del sistema -->
+        <div id="message-container" class="message-box hidden"></div>
+
+        <section class="accordion-container">
+            <!-- Formulario para crear y editar pedidos -->
+            <form id="pedido-form" autocomplete="off">
+                <!-- Campo oculto para el ID en modo de edición -->
+                <input type="hidden" id="pedido-id" value="">
+
+                <!-- Encabezado -->
+                <div class="accordion" data-step="1">
+                    <div class="accordion-header">Encabezado</div>
+                    <div class="accordion-body" id="formEncabezado">
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <input type="date" id="fecha" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="encargado1">Encargado<span style="color:red">*</span></label>
+                                <input type="text" id="encargado1" placeholder="Encargado" class="input-field" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="referencia">Referencia</label>
+                                <input type="text" id="referencia" placeholder="Referencia" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="importador">Importador<span style="color:red">*</span></label>
+                                <input type="text" id="importador" placeholder="Importador" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="nit1">NIT</label>
+                                <input type="text" id="nit1" placeholder="NIT" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="registroIVA1">Registro IVA</label>
+                                <input type="text" id="registroIVA1" placeholder="Registro IVA" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="facturarA">Facturar a:</label>
+                                <input type="text" id="facturarA" placeholder="Persona a facturar" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="encargado2">Encargado</label>
+                                <input type="text" id="encargado2" placeholder="Encargado 2" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="nit2">NIT</label>
+                                <input type="text" id="nit2" placeholder="NIT 2" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="registroIVA2">Registro IVA</label>
+                                <input type="text" id="registroIVA2" placeholder="Registro IVA 2" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="buttons-form" id="submitEncabezado">Guardar y
+                                    Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información del embarque -->
+                <div class="accordion" data-step="2">
+                    <div class="accordion-header">Información del embarque</div>
+                    <div class="accordion-body">
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="facturas">Facturas<span style="color:red">*</span></label>
+                                <input type="text" id="facturas" placeholder="Facturas" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="proveedor">Proveedor Ref.<span style="color:red">*</span></label>
+                                <input type="text" id="proveedor" placeholder="Proveedor Ref." class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="bultos">Bultos<span style="color:red">*</span></label>
+                                <input type="number" id="bultos" placeholder="Bultos" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo</label>
+                                <input type="text" id="tipo" placeholder="Tipo" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="kilos">Kilos</label>
+                                <input type="number" id="kilos" placeholder="Kilos" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="volumen">Volumen</label>
+                                <input type="number" id="volumen" placeholder="Volumen" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="btnAddInfoEmbarque" class="buttons-form">Guardar y
+                                    Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aduana -->
+                <div class="accordion" data-step="3">
+                    <div class="accordion-header">Aduana</div>
+                    <div class="accordion-body">
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="tipoServicio">Tipo de servicio</label>
+                                <select id="tipoServicio" class="input-field">
+                                    <option value="">Seleccione</option>
+                                    <option value="1">Exportación</option>
+                                    <option value="2">Importación</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="primeraModalidad">Primera modalidad<span style="color:red">*</span></label>
+                                <input type="text" id="primeraModalidad" placeholder="Primera modalidad"
+                                    class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="segundaModalidad">Segunda modalidad<span style="color:red">*</span></label>
+                                <input type="text" id="segundaModalidad" placeholder="Segunda modalidad"
+                                    class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="declaracion">Declaración de Mercancías<span
+                                        style="color:red">*</span></label>
+                                <input type="text" id="declaracion" placeholder="Declaración de mercancía"
+                                    class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="digitador">Digitador<span style="color:red">*</span></label>
+                                <input type="text" id="digitador" placeholder="Digitador" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="tramitador">Tramitador<span style="color:red">*</span></label>
+                                <input type="text" id="tramitador" placeholder="Tramitador" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="btnAddAduana" class="buttons-form">Guardar y
+                                    Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recolección -->
+                <div class="accordion" data-step="4">
+                    <div class="accordion-header">Recolección</div>
+                    <div class="accordion-body">
+                        <div class="form-container">
+                            <div class="form-group full-width">
+                                <label>Recolección</label>
+                                <label class="checkbox-label"><input type="checkbox" id="transporte"> Transporte</label>
+                                <label class="checkbox-label"><input type="checkbox" id="recoleccionEntrega">
+                                    Recolección entrega</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="documento">Número Documento<span style="color:red">*</span></label>
+                                <input type="text" id="documento" placeholder="Número de documento" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="lugarOrigen">Lugar de origen<span style="color:red">*</span></label>
+                                <input type="text" id="lugarOrigen" placeholder="Lugar de origen" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="paisOrigen">País de origen<span style="color:red">*</span></label>
+                                <input type="text" id="paisOrigen" placeholder="País de origen" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="lugarDestino">Lugar de destino<span style="color:red">*</span></label>
+                                <input type="text" id="lugarDestino" placeholder="Lugar de destino" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <label for="paisDestino">País de destino<span style="color:red">*</span></label>
+                                <input type="text" id="paisDestino" placeholder="País de destino" class="input-field">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="buttons-form">Guardar y Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permisos -->
+                <div class="accordion" data-step="5">
+                    <div class="accordion-header">Permisos</div>
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <label>Permisos</label>
+
+                            <!-- 📦 Aquí se insertarán los checkboxes dinámicamente -->
+                            <div class="permisos-checkboxes" id="permisos-checkboxes-container"></div>
+
+                            <div class="permisos-especificar">
+                                <div class="buttons-group">
+                                    <!-- 🟢 Botón para abrir el modal de agregar nuevo permiso -->
+                                    <button type="button" class="btnAñadirPermiso" id="btnAñadirPermiso">
+                                        + Añadir nuevo permiso
+                                    </button>
+
+                                    <!-- 🟡 Botón para guardar selección actual -->
+                                    <button type="button" class="buttons-form" id="btnGuardarPermiso">
+                                        Guardar y Siguiente
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL DE NUEVO PERMISO -->
+                <div id="modalPermisos" class="modalAgregar" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Agregar nuevo permiso</h3>
+
+                            <!-- 🔴 Botón para cerrar el modal -->
+                            <span id="btnCerrarPermisos" class="btn-close"></span>
+                        </div>
+
+                        <!-- 📝 Formulario para agregar nuevo permiso -->
+                        <form id="frmAgregarPermisos">
+                            <input type="text" id="input-modal-permisos" placeholder="Nuevo permiso" required />
+                            <button type="button" class="contrast" id="btnGuardarNuevoPermiso">
+                                Añadir
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Financiamientos -->
+                <div class="accordion" data-step="7">
+                    <div class="accordion-header">Financiamientos</div>
+                    <div class="accordion-body">
+                        <div class="form-container">
+                            <div class="form-group">
+                                <table class="order-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Cargo</th>
+                                            <th>Cant.</th>
+                                            <th>Carga</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="financiamientoBody">
+                                        <tr>
+                                            <td><input type="checkbox" id="cbImpuesto"><input type="text" id="impuesto"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadImpuesto" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaImpuesto" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalImpuestos" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbComplemento"><input type="text"
+                                                    id="complemento" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadComplemento" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaComplemento" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalComplemento" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbAlmacenajes"><input type="text"
+                                                    id="almacenajes" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadAlmacenajes" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaAlmacenajes" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalAlmacenajes" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbTransporte"><input type="text"
+                                                    id="transporte" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadTransporte" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaTransporte" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalTransporte" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbCuadrilla"><input type="text"
+                                                    id="cuadrilla" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadCuadrilla" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaCuadrilla" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalCuadrilla" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbPermisos"><input type="text" id="permisos"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadPermisos" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaPermisos" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalPermisosFinanciamiento"
+                                                    placeholder="Total" class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbMultas"><input type="text" id="multas"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadMultas" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaMultas" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalMultas" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbOirsa"><input type="text" id="oirsa"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadOirsa" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaOirsa" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalOirsa" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbFlete"><input type="text" id="flete"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadFlete" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaFlete" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalFlete" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbManejo"><input type="text" id="manejo"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadManejo" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaManejo" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalManejo" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbCopias"><input type="text" id="copias"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadCopias" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaCopias" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalCopiasScanner" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbSeguridad"><input type="text"
+                                                    id="seguridad" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadSeguridad" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaSeguridad" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalSeguridad" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbImpresiones"><input type="text"
+                                                    id="impresiones" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadImpresiones" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaImpresiones" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalImpresiones" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbParqueo"><input type="text" id="parqueo"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadParqueo" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaParqueo" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalParqueo" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbPrevia"><input type="text" id="previaMAG"
+                                                    placeholder="Cargo" class="input-field" readonly></td>
+                                            <td><input type="number" id="cantidadPrevia" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaPrevia" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalPreviaMAG" placeholder="Total"
+                                                    class="input-field"></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="grand-total"><input type="text" id="cantidad"
+                                                    placeholder="Cuenta" class="input-field"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- <button type="button" id="btnAgregarFinanciamientos" class="btnAñadirFinanciamiento">+ Añadir
+                            nuevos financiamientos</button> -->
+                        <div class="form-group">
+                            <button type="button" class="buttons-form" id="addAndSaveFinanciamiento">Guardar y
+                                Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modalAgregarFinanciamientos" class="modalAgregar">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Agregar nuevo financiamiento</h3>
+                            <span id="btnCerrarFinanciamientos" class="btn-close">✕</span>
+                        </div>
+                        <form id="frmAgregarFinanciamientos">
+                            <input type="text" id="input-modal-financiamientos" placeholder="Nuevo financiamiento"
+                                required />
+                            <button type="button" class="contrast">Añadir</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Cargos -->
+                <div class="accordion" data-step="8">
+                    <div class="accordion-header">Cargos</div>
+                    <div class="accordion-body">
+                        <div class="form-container">
+                            <div class="form-group">
+                                <table class="order-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Cargo</th>
+                                            <th>Cant.</th>
+                                            <th>Carga</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cargosBody">
+                                        <tr>
+                                            <td><input type="checkbox" id="cbImpuestoCargo"><input type="text"
+                                                    id="impuestoCargo" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadImpuestoCargo" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaImpuestoCargo" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalImpuestoCargo" placeholder="Total"
+                                                    class="input-field" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbComplementoCargo"><input type="text"
+                                                    id="complementoCargo" placeholder="Cargo" class="input-field"
+                                                    readonly></td>
+                                            <td><input type="number" id="cantidadComplementoCargo"
+                                                    placeholder="Cantidad" class="input-field"></td>
+                                            <td><input type="number" id="cargaComplementoCargo" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalComplementoCargo" placeholder="Total"
+                                                    class="input-field" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbTransporteCargo"><input type="text"
+                                                    id="transporteCargo" placeholder="Cargo" class="input-field"
+                                                    readonly></td>
+                                            <td><input type="number" id="cantidadTransporteCargo" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaTransporteCargo" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalTransporteCargo" placeholder="Total"
+                                                    class="input-field" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbPermisosCargo"><input type="text"
+                                                    id="permisosCargo" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadPermisosCargo" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaPermisosCargo" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalPermisosCargo" placeholder="Total"
+                                                    class="input-field" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" id="cbOtrosCargos"><input type="text"
+                                                    id="otrosCargos" placeholder="Cargo" class="input-field" readonly>
+                                            </td>
+                                            <td><input type="number" id="cantidadOtrosCargos" placeholder="Cantidad"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="cargaOtrosCargos" placeholder="Carga"
+                                                    class="input-field"></td>
+                                            <td><input type="number" id="totalOtrosCargos" placeholder="Total"
+                                                    class="input-field" readonly></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="grand-total">
+                                                <input type="text" id="totalGeneralCargos" placeholder="Cuenta"
+                                                    class="input-field" readonly>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="buttons-form" id="addAndSaveCargos">Guardar y
+                                Siguiente</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal para agregar nuevos cargos -->
+                <div id="modalAgregarCargos" class="modalAgregar">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Agregar nuevo cargo</h3>
+                            <span id="btnCerrarCargos" class="btn-close">✕</span>
+                        </div>
+                        <form id="frmAgregarCargos">
+                            <input type="text" id="input-modal-cargos" placeholder="Nuevo cargo" required />
+                            <button type="button" class="contrast">Añadir</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--Observaciones-->
+                <div class="accordion" data-step="8">
+                    <div class="accordion-header">Observaciones</div>
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <label for="estados">Estado</label>
+                            <select id="estado" name="estado" class="input-field">
+                                <option value="">Seleccione</option>
+                                <option value="1">Verde</option>
+                                <option value="2">Amarillo</option>
+                                <option value="3">Rojo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observaciones">Observaciones<span style="color:red">*</span></label>
+                            <input type="text" id="observaciones" name="observaciones"
+                                placeholder="Observaciones del pedido" class="input-field">
+                        </div>
+
+                        <button type="button" class="buttons-form" id="guardarObservacion">
+                            Guardar y Siguiente
+                        </button>
+
+                        <label for="text" id="idObservacion" class="idObservacion" hidden></label>
+                    </div>
+                </div>
+
+                <div class="accordion" data-step="9">
+                    <div class="accordion-header">Asignación de transporte</div>
+                    <div class="accordion-body">
+                        <div class="form-group">
+                            <select id="transportista" class="input-field"></select>
+                            <label for="text" id="idTransporte" class="idObservacion"></label>
+                        </div>
+
+                        <button type="button" class="buttons-form" id="guardarTransporte">Guardar y
+                            Siguiente</button>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" id="submit-button" class="btn-submit">Guardar Pedido</button>
+                    <button type="button" id="cancel-button" class="btn-cancel hidden">Cancelar Edición</button>
+                    <button type="submit" id="descargar" class="btn-descargar">Descargar PDF</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+</body>
+<!-- Librería jsPDF desde CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script type="module" src="js/FuncionamientoHeader/ServiceOrder.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="module" src="js/Controllers/LoadServiceOrder.js"></script>
+<script type="module" src="js/Controllers/EncabezadoController.js"></script>
+<script type="module" src="js/Controllers/InfoEmbarqueController.js"></script>
+<script type="module" src="js/Controllers/AduanaController.js"></script>
+<script type="module" src="js/Controllers/ObservacionesController.js"></script>
+<!--<script type="module" src="js/Controllers/TransporteController.js"></script>-->
+<script type="module" src="js/Controllers/RecoleccionController.js"></script>
+<script type="module" src="js/Controllers/TransporteTransportistaController.js"></script>
+<script type="module" src="js/Controllers/PermisosController.js"></script>
+<script type="module" src="js/Controllers/DatosContablesController.js"></script>
+<script type="module" src="js/Controllers/FinanciamientosController.js"></script>
+<script type="module" src="js/Controllers/CargosController.js"></script>
+
+<script type="module" src="js/ValidarRol.js"></script>
+
+</html>

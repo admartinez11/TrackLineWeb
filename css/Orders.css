@@ -1,0 +1,178 @@
+/* Fuente moderna */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fb;
+    color: #0A1D37;
+    margin: 0;
+    padding: 0;
+}
+
+/* Título principal */
+h2 {
+    font-size: 36px;
+    text-align: center;
+    margin: 20px 0;
+    color: #0A1D37;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.titulo h2 {
+    padding: 30px;
+    color: #0A1D37;
+}
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Barra de búsqueda y filtros */
+.search-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-filter input {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.search-filter input:focus {
+    border-color: #EB8125;
+    outline: none;
+    box-shadow: 0 0 8px rgba(235, 129, 37, 0.3);
+}
+
+.search-filter select {
+    min-width: 200px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 2px solid #0A1D37;
+    font-size: 15px;
+    background-color: #0A1D37;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.search-filter select:hover {
+    background-color: #EB8125;
+    border-color: #EB8125;
+    color: #fff;
+}
+
+/* Lista de pedidos */
+#listaPedidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjeta de pedido */
+.pedido {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+.pedido:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.pedido h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #0A1D37;
+    font-weight: 600;
+}
+
+.pedido p {
+    font-size: 15px;
+    margin: 5px 0;
+    color: #555;
+}
+
+.pedido a {
+    color: #EB8125;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.pedido a:hover {
+    color: #0A1D37;
+}
+
+/* Estado / progreso */
+.progreso {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 14px;
+    background: #EB8125;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    .search-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-filter input,
+    .search-filter select {
+        width: 100%;
+    }
+
+    #listaPedidos {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 🔹 Tarjeta extra de transporte adicional */
+.extra-card {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f3f6fb;
+    border-left: 4px solid #EB8125;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.toggle-extra {
+    margin-top: 10px;
+    padding: 6px 10px;
+    border: none;
+    background: #EB8125;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.toggle-extra:hover {
+    background: #c96517;
+}
